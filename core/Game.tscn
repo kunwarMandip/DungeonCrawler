@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdgsvtes6cyr3"]
+
+[ext_resource type="Script" uid="uid://b5arjm8y2bb0o" path="res://core/game_manager.gd" id="1_86cv7"]
+[ext_resource type="Script" uid="uid://bek6fytw118jg" path="res://core/game.gd" id="1_cmax4"]
+[ext_resource type="PackedScene" uid="uid://bmjhcg4cggwkg" path="res://ui/hud/HUD.tscn" id="1_sgl4g"]
+[ext_resource type="PackedScene" uid="uid://bskmhd4wpa5ke" path="res://entities/player/Player.tscn" id="2_cmax4"]
+
+[node name="Game" type="Node2D" unique_id=1637116062]
+script = ExtResource("1_cmax4")
+
+[node name="GameManager" type="Node2D" parent="." unique_id=1558089738]
+script = ExtResource("1_86cv7")
+
+[node name="CurrentRoom" type="Node2D" parent="." unique_id=1604741996]
+
+[node name="Player" parent="." unique_id=1773291152 instance=ExtResource("2_cmax4")]
+position = Vector2(86, 119)
+
+[node name="Hud" parent="." unique_id=1414914656 instance=ExtResource("1_sgl4g")]
+visible = false

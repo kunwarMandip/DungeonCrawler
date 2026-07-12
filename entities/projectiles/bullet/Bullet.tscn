@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ch4tl0p73fb7d"]
+
+[ext_resource type="Script" uid="uid://vj2dx23e5y3o" path="res://entities/projectiles/bullet/bullet.gd" id="1_fldqw"]
+
+[node name="Bullet" type="Area2D" unique_id=1724966557]
+script = ExtResource("1_fldqw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=145949922]
+custom_minimum_size = Vector2(10, 6)
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 3.0
+color = Color(0.30573255, 0.0010743747, 0.6701776, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=699135451]

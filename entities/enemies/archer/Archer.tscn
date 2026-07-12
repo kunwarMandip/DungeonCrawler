@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b65a5x3i78l5g"]
+
+[ext_resource type="Script" uid="uid://ttgdfol3lm46" path="res://entities/enemies/archer/archer.gd" id="1_b2260"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4uef"]
+
+[node name="Archer" type="CharacterBody2D" unique_id=2096192914]
+script = ExtResource("1_b2260")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761191049]
+shape = SubResource("RectangleShape2D_o4uef")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2128200258]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=5337611]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1963049752]
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1969378146]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=263483924]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=795309854]
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D" unique_id=56464441]
+offset_right = 4.0
+offset_bottom = 27.0

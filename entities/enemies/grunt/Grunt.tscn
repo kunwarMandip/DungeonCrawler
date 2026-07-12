@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b7phmnmmuk8ld"]
+
+[ext_resource type="Script" uid="uid://c6o21rle8lfgx" path="res://entities/enemies/grunt/grunt.gd" id="1_pm8k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjh2c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pm8k0"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjh2c"]
+radius = 36.0
+
+[node name="Grunt" type="CharacterBody2D" unique_id=1657122227]
+script = ExtResource("1_pm8k0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776940164]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_mjh2c")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=356820962]
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=245561036]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionZone" unique_id=1173780523]
+shape = SubResource("CircleShape2D_pm8k0")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=1535127938]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1134817306]
+shape = SubResource("CircleShape2D_mjh2c")
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=1640995551]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1485747521]
+one_shot = true
+
+[node name="HitFlashTimer" type="Timer" parent="." unique_id=513572820]
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=2036912543]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=443160970]

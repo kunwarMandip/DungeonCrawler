@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://coh8g3oj3k70n"]
+
+[ext_resource type="Script" uid="uid://cco5lieumav6b" path="res://entities/enemies/boss/boss.gd" id="1_uh8lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kjxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxds7"]
+
+[node name="Boss" type="CharacterBody2D" unique_id=215276846]
+script = ExtResource("1_uh8lu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38002854]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1541151185]
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=771962081]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=1172009980]
+shape = SubResource("RectangleShape2D_6kjxa")
+
+[node name="MeleeZone" type="Area2D" parent="." unique_id=602151429]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleeZone" unique_id=2114483740]
+shape = SubResource("RectangleShape2D_kxds7")
+
+[node name="PhaseTimer" type="Timer" parent="." unique_id=2131227162]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=73960243]
+
+[node name="BulletPool" type="Node2D" parent="." unique_id=794261060]
+
+[node name="BossHealthBar" type="ProgressBar" parent="." unique_id=414702413]
+offset_right = 4.0
+offset_bottom = 27.0

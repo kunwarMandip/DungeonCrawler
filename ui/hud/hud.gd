@@ -9,7 +9,7 @@ extends CanvasLayer
 @onready var inventory_panel: Panel = $InventoryPanel
 @onready var tooltip: Panel = $Tooltip
 
-func setup(inventory: Inventory) -> void:
+func setup(_inventory: Inventory) -> void:
 	#inventory_panel.setup(inventory)
 	boss_container.visible = false
 

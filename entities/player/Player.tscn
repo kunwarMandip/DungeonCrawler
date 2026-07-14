@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bskmhd4wpa5ke"]
 
-[ext_resource type="Script" uid="uid://bc0s5ps8crleg" path="res://entities/player/player.gd" id="1_mab2k"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxvd"]
 size = Vector2(28, 28)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mab2k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mab2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
+size = Vector2(28, 28)
 
 [node name="Player" type="CharacterBody2D" unique_id=1773291152]
-script = ExtResource("1_mab2k")
+collision_layer = 2
+collision_mask = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=512255031]
 custom_minimum_size = Vector2(28, 28)
@@ -21,7 +21,6 @@ offset_bottom = 14.0
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1205679646]
-visible = false
 shape = SubResource("RectangleShape2D_dlxvd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1000174109]
@@ -40,7 +39,7 @@ color = Color(1, 0.36862746, 0, 1)
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=1225114142]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=355747010]
-shape = SubResource("RectangleShape2D_mab2k")
+shape = SubResource("CircleShape2D_mab2k")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1415405871]
 

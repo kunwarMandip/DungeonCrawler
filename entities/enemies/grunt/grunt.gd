@@ -8,20 +8,24 @@ const ATTACK_DAMAGE: float = 12.0
 const MAX_HEALTH: float = 60
 const SCORE_VALUE: int = 10
 
+@export var patrol_loop: bool = true
+@export var patrol_points: Array[Vector2] = []
+
 var health: float = MAX_HEALTH
 var state: State = State.IDLE
 var player: Node2D = null
-var patrol_points: Array[Vector2] = []
 var patrol_index: int = 0
 
 signal died(position: Vector2)
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var color_rect: ColorRect = $ColorRect
 @onready var attack_zone: Area2D = $AttackZone
 @onready var detection_zone: Area2D = $DetectionZone
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var attack_timer: Timer = $AttackTimer
 @onready var idle_timer: Timer = $IdleTimer
+@onready var state_label: Label = $StateLabel
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -59,9 +63,17 @@ func _change_state(new_state: State) -> void:
 			velocity = Vector2.ZERO
 			if attack_timer.is_stopped():
 				attack_timer.start()
-				
+	state_label.text = State.keys()[state]
 
 func _do_patrol() -> void:
+	#navigation_agent_2d.target_position = patrol_points[patrol_index]
+	#velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * PATROL_SPEED
+	#move_and_slide()
+	#if global_position.distance_to(patrol_points[patrol_index]) < 16.0:
+		#patrol_index = 0
+		#idle_timer.wait_time = randf_range(PATROL_WAIT_MIN, PATROL_WAIT_MAX)
+		#_change_state(State.IDLE)
+		
 	if patrol_points.is_empty():
 		return
 	var target := patrol_points[patrol_index]
@@ -88,11 +100,17 @@ func take_damage(amount: float) -> void:
 		queue_free()
 
 func _flash() -> void:
-	$Sprite2D.modulate = Color.WHITE
+	#$Sprite2D.modulate = Color.WHITE
+	#await get_tree().create_timer(0.08).timeout
+	#$Sprite2D.modulate = Color(1, 0.3, 0.3)
+	#await get_tree().create_timer(0.08).timeout
+	#$Sprite2D.modulate = Color.WHITE
+	var old_color = color_rect.color
+	color_rect.color = Color.WHITE
 	await get_tree().create_timer(0.08).timeout
-	$Sprite2D.modulate = Color(1, 0.3, 0.3)
+	color_rect.color = Color(1, 0.3, 0.3)
 	await get_tree().create_timer(0.08).timeout
-	$Sprite2D.modulate = Color.WHITE
+	color_rect.color = old_color
 
 func _on_detect_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

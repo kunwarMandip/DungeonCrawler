@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://ch4tl0p73fb7d"]
 
 [ext_resource type="Script" uid="uid://vj2dx23e5y3o" path="res://entities/projectiles/bullet/bullet.gd" id="1_fldqw"]
+[ext_resource type="Script" uid="uid://b3vae3bx0r0mj" path="res://entities/components/ProjectileComponent.gd" id="2_yen2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fldqw"]
+size = Vector2(10, 6)
 
 [node name="Bullet" type="Area2D" unique_id=1724966557]
+collision_layer = 16
+collision_mask = 5
 script = ExtResource("1_fldqw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=145949922]
@@ -13,4 +19,11 @@ offset_right = 5.0
 offset_bottom = 3.0
 color = Color(0.30573255, 0.0010743747, 0.6701776, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699796999]
+shape = SubResource("RectangleShape2D_fldqw")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=699135451]
+
+[node name="ProjectileComponent" type="Node" parent="." unique_id=733456477]
+script = ExtResource("2_yen2q")
+metadata/_custom_type_script = "uid://b3vae3bx0r0mj"

@@ -1,27 +1,35 @@
 [gd_scene format=3 uid="uid://b65a5x3i78l5g"]
 
 [ext_resource type="Script" uid="uid://ttgdfol3lm46" path="res://entities/enemies/archer/archer.gd" id="1_b2260"]
+[ext_resource type="Script" uid="uid://bvg6nwrv5oc1s" path="res://entities/state/StateMachine.gd" id="2_7gx5e"]
+[ext_resource type="Script" uid="uid://ddy7oc5dlng2m" path="res://entities/enemies/states/EnemyIdle.gd" id="3_io652"]
+[ext_resource type="Script" uid="uid://dsgo34yhiwldc" path="res://entities/enemies/states/EnemyChase.gd" id="4_4qwes"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4uef"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3snl1"]
 
 [node name="Archer" type="CharacterBody2D" unique_id=2096192914]
 script = ExtResource("1_b2260")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761191049]
-shape = SubResource("RectangleShape2D_o4uef")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1154216105]
+custom_minimum_size = Vector2(20, 20)
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.0071018655, 0.0021159358, 0.026289076, 1)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2128200258]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149211969]
+shape = SubResource("RectangleShape2D_3snl1")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=5337611]
+[node name="StateMachine" type="Node" parent="." unique_id=1347935807 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_7gx5e")
+initial_state = NodePath("EnemyIdle")
+metadata/_custom_type_script = "uid://bvg6nwrv5oc1s"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1963049752]
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1211776991]
+script = ExtResource("3_io652")
+metadata/_custom_type_script = "uid://ddy7oc5dlng2m"
 
-[node name="Area2D2" type="Area2D" parent="." unique_id=1969378146]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=263483924]
-
-[node name="Node2D" type="Node2D" parent="." unique_id=795309854]
-
-[node name="ProgressBar" type="ProgressBar" parent="Node2D" unique_id=56464441]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=942704817]
+script = ExtResource("4_4qwes")
+metadata/_custom_type_script = "uid://dsgo34yhiwldc"

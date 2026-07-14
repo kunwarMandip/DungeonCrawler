@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://b7phmnmmuk8ld"]
 
 [ext_resource type="Script" uid="uid://c6o21rle8lfgx" path="res://entities/enemies/grunt/grunt.gd" id="1_pm8k0"]
+[ext_resource type="Script" uid="uid://bvg6nwrv5oc1s" path="res://entities/state/StateMachine.gd" id="2_mjh2c"]
+[ext_resource type="Script" uid="uid://ddy7oc5dlng2m" path="res://entities/enemies/states/EnemyIdle.gd" id="3_ngo67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjh2c"]
+size = Vector2(28, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pm8k0"]
 radius = 120.0
@@ -11,11 +14,20 @@ radius = 120.0
 radius = 36.0
 
 [node name="Grunt" type="CharacterBody2D" unique_id=1657122227]
+collision_layer = 4
 script = ExtResource("1_pm8k0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776940164]
-position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_mjh2c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1854794428]
+clip_contents = true
+custom_minimum_size = Vector2(28, 28)
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+color = Color(1, 1, 0, 1)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=356820962]
 
@@ -30,6 +42,7 @@ shape = SubResource("CircleShape2D_pm8k0")
 shape = SubResource("CircleShape2D_mjh2c")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=1640995551]
+one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1485747521]
 one_shot = true
@@ -38,7 +51,30 @@ one_shot = true
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=2036912543]
-offset_right = 4.0
-offset_bottom = 27.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = 14.0
+offset_right = 14.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=443160970]
+[node name="StateLabel" type="Label" parent="." unique_id=1219621545]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -17.0
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." unique_id=1739981001]
+script = ExtResource("2_mjh2c")
+metadata/_custom_type_script = "uid://bvg6nwrv5oc1s"
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=2068646794]
+script = ExtResource("3_ngo67")
+metadata/_custom_type_script = "uid://ddy7oc5dlng2m"

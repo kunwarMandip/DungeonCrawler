@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var game_manager: Node2D = $GameManager
 @onready var current_room: Node2D = $CurrentRoom
-@onready var player: CharacterBody2D = $Player
+@onready var player: CharacterBody2D = $Hero
 @onready var hud: CanvasLayer = $Hud
 
 func _ready() -> void:

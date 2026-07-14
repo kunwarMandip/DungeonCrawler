@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://dshmflxyspq1r"]
 
 [ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://world/rooms/common/room.gd" id="1_aii61"]
-[ext_resource type="PackedScene" uid="uid://b7phmnmmuk8ld" path="res://entities/enemies/grunt/Grunt.tscn" id="2_wqvny"]
+[ext_resource type="PackedScene" uid="uid://c5q1rdvlxwp2x" path="res://entities/enemies/test/TestEnemy.tscn" id="2_wqvny"]
 [ext_resource type="Texture2D" uid="uid://fjyx86mby4tu" path="res://assets/Pixel Art Top Down/Texture/TX Tileset Wall.png" id="3_wqvny"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aii61"]
-vertices = PackedVector2Array(874, 362, 1271.9609, 711, 9.03125, 711, 182, 362, 10.96875, 9.9921875, 182, 310, 1269.0391, 9, 874, 310)
+vertices = PackedVector2Array(884, 372, 1261.9219, 701, 19.0625, 701, 172, 372, 20.9375, 19.976563, 172, 300, 1259.0781, 19.007813, 884, 300)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(4, 6, 7, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1, 0, -1, 721, 1282, 721, 1279, -1)])
+agent_radius = 20.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1cx5"]
 texture = ExtResource("3_wqvny")
@@ -91,19 +92,27 @@ script = ExtResource("1_aii61")
 
 [node name="EnemiesNode" type="Node2D" parent="." unique_id=989661136]
 
-[node name="Grunt" parent="EnemiesNode" unique_id=1657122227 instance=ExtResource("2_wqvny")]
-position = Vector2(150, 150)
+[node name="TestEnemy" parent="EnemiesNode" unique_id=1809461854 instance=ExtResource("2_wqvny")]
 
-[node name="Grunt2" parent="EnemiesNode" unique_id=1896428995 instance=ExtResource("2_wqvny")]
-position = Vector2(50, 50)
+[node name="Point0" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=87524769]
+position = Vector2(552, 151)
+
+[node name="Point1" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=950657772]
+position = Vector2(582, 503)
+
+[node name="Point2" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=1579815275]
+position = Vector2(153, 340)
 
 [node name="DropsNode" type="Node2D" parent="." unique_id=1996809138]
+metadata/_edit_lock_ = true
 
 [node name="ItemDrops" type="Node2D" parent="." unique_id=554392354]
 position = Vector2(952, 154)
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1656884826]
 navigation_polygon = SubResource("NavigationPolygon_aii61")
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1444731881]
 tile_map_data = PackedByteArray("AAAGAAoAAAACAAMAAAAHAAoAAAACAAMAAAAIAAoAAAACAAMAAAAJAAoAAAACAAMAAAAKAAoAAAACAAMAAAALAAoAAAACAAMAAAAMAAoAAAACAAMAAAANAAoAAAACAAMAAAAOAAoAAAACAAMAAAAPAAoAAAACAAMAAAAQAAoAAAACAAMAAAARAAoAAAACAAMAAAASAAoAAAACAAMAAAATAAoAAAACAAMAAAAUAAoAAAACAAMAAAAVAAoAAAACAAMAAAAWAAoAAAACAAMAAAAXAAoAAAACAAMAAAAYAAoAAAACAAMAAAAZAAoAAAACAAMAAAAaAAoAAAACAAMAAAA=")

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://lnainymxj0bc"]
+
+[ext_resource type="Script" uid="uid://ctfnen2gmjfp6" path="res://entities/player/hero.gd" id="1_l2w42"]
+[ext_resource type="Script" uid="uid://dbn27jyjf7ex0" path="res://entities/components/HealthComponent.gd" id="2_6n8re"]
+[ext_resource type="Script" uid="uid://bsp6fwal0mb2v" path="res://entities/components/HurtboxComponent.gd" id="3_qymkh"]
+[ext_resource type="Script" uid="uid://gn25apjyeyks" path="res://entities/components/ShooterComponent.gd" id="5_ccpfy"]
+[ext_resource type="Script" uid="uid://dvdn3cram54nu" path="res://entities/player/states/PlayerIdle.gd" id="6_p6gdv"]
+[ext_resource type="Script" uid="uid://dm2vanc6axcjp" path="res://entities/player/states/PlayerMove.gd" id="7_l2w42"]
+[ext_resource type="Script" uid="uid://bsa618suhwumi" path="res://entities/components/InputComponent.gd" id="7_t2d1t"]
+[ext_resource type="Script" uid="uid://bvg6nwrv5oc1s" path="res://entities/state/StateMachine.gd" id="8_6n8re"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2w42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n8re"]
+
+[node name="Hero" type="CharacterBody2D" unique_id=676124111]
+script = ExtResource("1_l2w42")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=243186735]
+custom_minimum_size = Vector2(20, 20)
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=587945995]
+shape = SubResource("RectangleShape2D_l2w42")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1712995007]
+script = ExtResource("2_6n8re")
+metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=149401948]
+script = ExtResource("3_qymkh")
+metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=340072321]
+shape = SubResource("RectangleShape2D_6n8re")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=643081692]
+
+[node name="InputComponent" type="Node" parent="." unique_id=100782971]
+script = ExtResource("7_t2d1t")
+metadata/_custom_type_script = "uid://bsa618suhwumi"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1738310805 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_6n8re")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" unique_id=2112263597]
+script = ExtResource("6_p6gdv")
+metadata/_custom_type_script = "uid://dvdn3cram54nu"
+
+[node name="PlayerMove" type="Node" parent="StateMachine" unique_id=1931946061]
+script = ExtResource("7_l2w42")
+metadata/_custom_type_script = "uid://dm2vanc6axcjp"
+
+[node name="ShooterComponent" type="Node" parent="." unique_id=1752700835]
+script = ExtResource("5_ccpfy")
+metadata/_custom_type_script = "uid://gn25apjyeyks"

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c5q1rdvlxwp2x"]
+
+[ext_resource type="Script" uid="uid://jgy52xuyqfs0" path="res://entities/enemies/test/test_enemy.gd" id="1_atrib"]
+[ext_resource type="Script" uid="uid://bsp6fwal0mb2v" path="res://entities/components/HurtboxComponent.gd" id="1_iivve"]
+[ext_resource type="Script" uid="uid://dbn27jyjf7ex0" path="res://entities/components/HealthComponent.gd" id="1_tl6vk"]
+[ext_resource type="Script" uid="uid://b8s5wad65sf1n" path="res://entities/components/NavigationComponent.gd" id="2_fnu34"]
+[ext_resource type="Script" uid="uid://d2weles3p46q" path="res://entities/components/DetectionComponent.gd" id="3_h7oo2"]
+[ext_resource type="Script" uid="uid://bvg6nwrv5oc1s" path="res://entities/state/StateMachine.gd" id="4_30ude"]
+[ext_resource type="Script" uid="uid://c0bxpktxhr5jt" path="res://entities/components/PatrolComponent.gd" id="4_ypwkj"]
+[ext_resource type="Script" uid="uid://ddy7oc5dlng2m" path="res://entities/enemies/states/EnemyIdle.gd" id="5_30ude"]
+[ext_resource type="Script" uid="uid://dsgo34yhiwldc" path="res://entities/enemies/states/EnemyChase.gd" id="5_h7oo2"]
+[ext_resource type="Script" uid="uid://doq4ffeualtcs" path="res://entities/enemies/states/EnemyPatrol.gd" id="9_11dc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jerdy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atrib"]
+radius = 140.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atrib"]
+
+[node name="TestEnemy" type="CharacterBody2D" unique_id=1809461854]
+script = ExtResource("1_atrib")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=917043607]
+custom_minimum_size = Vector2(20, 20)
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.3057982, 0.0009233403, 0.7193444, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716177311]
+shape = SubResource("RectangleShape2D_jerdy")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1703017112]
+script = ExtResource("1_tl6vk")
+metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1532073612]
+path_desired_distance = 4.0
+path_max_distance = 32.0
+avoidance_enabled = true
+radius = 20.0
+avoidance_mask = 0
+
+[node name="NavigationComponent" type="Node" parent="." unique_id=147589704]
+script = ExtResource("2_fnu34")
+metadata/_custom_type_script = "uid://b8s5wad65sf1n"
+
+[node name="PatrolComponent" type="Node" parent="." unique_id=1742144889]
+script = ExtResource("4_ypwkj")
+metadata/_custom_type_script = "uid://c0bxpktxhr5jt"
+
+[node name="DetectionComponent" type="Area2D" parent="." unique_id=158420724]
+script = ExtResource("3_h7oo2")
+metadata/_custom_type_script = "uid://d2weles3p46q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent" unique_id=1405578597]
+shape = SubResource("CircleShape2D_atrib")
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=480619066]
+script = ExtResource("1_iivve")
+metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2127554149]
+shape = SubResource("RectangleShape2D_atrib")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2123464697 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_30ude")
+initial_state = NodePath("EnemyIdle")
+metadata/_custom_type_script = "uid://bvg6nwrv5oc1s"
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1962304520]
+script = ExtResource("5_30ude")
+metadata/_custom_type_script = "uid://ddy7oc5dlng2m"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1878799928]
+script = ExtResource("5_h7oo2")
+chase_speed = 100.0
+metadata/_custom_type_script = "uid://dsgo34yhiwldc"
+
+[node name="EnemyPatrol" type="Node" parent="StateMachine" unique_id=576147184]
+script = ExtResource("9_11dc3")
+patrol_speed = 200.0
+metadata/_custom_type_script = "uid://doq4ffeualtcs"

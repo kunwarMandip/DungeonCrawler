@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://ca45npmrlqxx1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maoo1"]
+bg_color = Color(0.07058824, 0.07058824, 0.12156863, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78431374, 0.6627451, 0.31764707, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+DescLabel/base_type = &"Label"
+DescLabel/colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+DescLabel/font_sizes/font_size = 9
+NameLabel/base_type = &"Label"
+NameLabel/colors/font_color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+NameLabel/font_sizes/font_size = 11
+StatLabel/base_type = &"Label"
+StatLabel/colors/font_color = Color(0.30980393, 0.7647059, 0.96862745, 1)
+StatLabel/font_sizes/font_size = 9
+Tooltip/base_type = &"Panel"
+Tooltip/styles/panel = SubResource("StyleBoxFlat_maoo1")
+TooltipMargin/base_type = &"MarginContainer"
+TooltipMargin/constants/margin_bottom = 8
+TooltipMargin/constants/margin_left = 8
+TooltipMargin/constants/margin_right = 8
+TooltipMargin/constants/margin_top = 8

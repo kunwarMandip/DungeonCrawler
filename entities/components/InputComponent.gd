@@ -6,6 +6,8 @@ signal melee_pressed
 
 var movement: Vector2 = Vector2.ZERO
 
+@onready var _body: Node2D = get_parent()
+
 func _physics_process(_delta: float) -> void:
 	movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	

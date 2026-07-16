@@ -1,5 +1,8 @@
 extends Node2D
 
+signal game_won
+signal game_lost
+
 const ROOMS: Array[String] = [
 	"res://world/rooms/Room_1.tscn"
 ]
@@ -8,12 +11,9 @@ var current_room_index: int = 0
 var current_room: Node2D = null
 var player: CharacterBody2D = null
 
-signal game_won
-signal game_lost
-
 func setup(p: CharacterBody2D) -> void:
 	player = p
-	player.died.connect(_on_player_died)
+	player.health_component.died.connect(_on_player_died)
 	_load_room(0)
 
 func _load_room(index: int) -> void:
@@ -36,7 +36,7 @@ func _load_room(index: int) -> void:
 			get_parent().get_node("HUD").update_boss_health(c, m)
 		)
 		get_parent().get_node("HUD").show_boss_health()
-	_place_player_at_spawn()
+	_place_player_at_spawn()                                                               
 
 func _place_player_at_spawn() -> void:
 	var spawn := current_room.get_node_or_null("SpawnPoints/PlayerSpawn")
@@ -50,6 +50,7 @@ func _on_door_entered(_direction: String) -> void:
 		
 func _on_room_cleared() -> void:
 	print("Room ", current_room_index + 1, " cleared")
+	
 func _on_boss_died() -> void:
 	game_won.emit()
 	

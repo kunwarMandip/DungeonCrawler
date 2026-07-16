@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://ddy7oc5dlng2m" path="res://entities/enemies/states/EnemyIdle.gd" id="5_30ude"]
 [ext_resource type="Script" uid="uid://dsgo34yhiwldc" path="res://entities/enemies/states/EnemyChase.gd" id="5_h7oo2"]
 [ext_resource type="Script" uid="uid://doq4ffeualtcs" path="res://entities/enemies/states/EnemyPatrol.gd" id="9_11dc3"]
-[ext_resource type="PackedScene" uid="uid://dj0tmvsmnm7lw" path="res://entities/weapons/gun/Gun.tscn" id="11_uyjcb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jerdy"]
 
@@ -20,7 +19,6 @@ radius = 140.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atrib"]
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1809461854]
-collision_layer = 4
 script = ExtResource("1_atrib")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=917043607]
@@ -55,8 +53,6 @@ script = ExtResource("4_ypwkj")
 metadata/_custom_type_script = "uid://c0bxpktxhr5jt"
 
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=158420724]
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("3_h7oo2")
 metadata/_custom_type_script = "uid://d2weles3p46q"
 
@@ -64,28 +60,11 @@ metadata/_custom_type_script = "uid://d2weles3p46q"
 shape = SubResource("CircleShape2D_atrib")
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=480619066]
-collision_layer = 256
-collision_mask = 16
 script = ExtResource("1_iivve")
 metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2127554149]
 shape = SubResource("RectangleShape2D_atrib")
-
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1837025839]
-custom_minimum_size = Vector2(20, 5)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -10.0
-offset_top = -37.0
-offset_right = 10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-
-[node name="Node2D" type="Node2D" parent="." unique_id=50669424]
-
-[node name="Gun" parent="." unique_id=1632522534 instance=ExtResource("11_uyjcb")]
 
 [node name="StateMachine" type="Node" parent="." unique_id=2123464697 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_30ude")
@@ -106,6 +85,13 @@ script = ExtResource("9_11dc3")
 patrol_speed = 200.0
 metadata/_custom_type_script = "uid://doq4ffeualtcs"
 
-[node name="StateLabel" type="Label" parent="." unique_id=784492973]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1837025839]
+custom_minimum_size = Vector2(20, 5)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.0
+offset_top = -37.0
+offset_right = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dj0tmvsmnm7lw"]
+
+[ext_resource type="Script" uid="uid://b8vn43ve6y0tk" path="res://entities/weapons/gun/gun.gd" id="1_yse0r"]
+[ext_resource type="Script" uid="uid://gn25apjyeyks" path="res://entities/components/ShooterComponent.gd" id="2_gaufo"]
+[ext_resource type="PackedScene" uid="uid://ch4tl0p73fb7d" path="res://entities/projectiles/bullet/Bullet.tscn" id="3_ph7o4"]
+
+[node name="Gun" type="Node2D" unique_id=1632522534 node_paths=PackedStringArray("muzzle")]
+script = ExtResource("1_yse0r")
+muzzle = NodePath("Muzzle")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=920073094]
+custom_minimum_size = Vector2(20, 4)
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1988943642]
+position = Vector2(20, 0)
+
+[node name="ShooterComponent" type="Node" parent="." unique_id=692378063]
+script = ExtResource("2_gaufo")
+bullet_scene = ExtResource("3_ph7o4")
+metadata/_custom_type_script = "uid://gn25apjyeyks"

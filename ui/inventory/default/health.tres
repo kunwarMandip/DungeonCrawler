@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://36cowm0y6hgl"]
+
+[ext_resource type="Script" uid="uid://dg1k4hwh5dro" path="res://ui/inventory/data/Item.gd" id="1_ou64l"]
+
+[resource]
+script = ExtResource("1_ou64l")
+id = "HEALTH"
+display_name = "HEALTH"
+description = "HEALTH"
+color = Color(0.008202022, 0.008202025, 0.008202025, 1)
+metadata/_custom_type_script = "uid://dg1k4hwh5dro"

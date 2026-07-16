@@ -7,7 +7,7 @@ extends Node2D
 
 func _ready() -> void:
 	game_manager.setup(player)
-	player.health_changed.connect(hud.update_health)
+	player.health_component.health_changed.connect(hud.update_health)
 	game_manager.game_won.connect(_on_win)
 	game_manager.game_lost.connect(_on_lose)
 	hud.setup(player.inventory)

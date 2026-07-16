@@ -5,10 +5,11 @@ class_name EnemyPatrol
 @onready var enemy: CharacterBody2D = owner
 
 func Enter() -> void:
-	print("Enemy Patrol")
+	#print("Enemy Patrol")
+	$"../../StateLabel".text = "Enemy Patrol"
 	
 func Physics_update(_delta: float) -> void:
-	if enemy.target:
+	if enemy.detection_component.target:
 		Transitioned.emit(self, "EnemyChase")
 		return
 	

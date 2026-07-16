@@ -7,10 +7,11 @@ class_name EnemyIdle
 var idle_timer: float = 0.0
 
 func Enter() -> void:
-	print("Enemy Idle")
+	#print("Enemy Idle")
+	$"../../StateLabel".text = "EnemyIdle"
 	
 func Physics_update(_delta: float) -> void:
-	if enemy.target:
+	if enemy.detection_component.target:
 		Transitioned.emit(self, "EnemyChase")
 		return
 	

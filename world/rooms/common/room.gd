@@ -52,5 +52,3 @@ func _on_enemy_died(enemy_position: Vector2) -> void:
 
 func _try_drop_item(_pos: Vector2) -> void:
 	pass
-	
-	

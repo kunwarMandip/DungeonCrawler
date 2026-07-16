@@ -8,7 +8,7 @@ size = Vector2(10, 6)
 
 [node name="Bullet" type="Area2D" unique_id=1724966557]
 collision_layer = 16
-collision_mask = 5
+collision_mask = 257
 script = ExtResource("1_fldqw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=145949922]

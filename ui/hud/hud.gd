@@ -10,7 +10,7 @@ extends CanvasLayer
 @onready var tooltip: Panel = $Tooltip
 
 func setup(_inventory: Inventory) -> void:
-	#inventory_panel.setup(inventory)
+	inventory_panel.setup(_inventory)
 	boss_container.visible = false
 
 func update_health(current:float, maximum: float) -> void:

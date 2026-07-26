@@ -13,9 +13,14 @@ var inventory: Inventory = Inventory.new()
 func _ready() -> void:
 	add_to_group("player")
 	camera_2d.make_current()
-	gun.setup($Node2D)
 	input_component.shoot_pressed.connect(func():gun.shoot())
-	hurtbox_component.hit.connect(func (damage: float, _source: Node):
-		health_component.take_damage(damage)
-	)
+	hurtbox_component.hit.connect(_on_hurtbox_hit)
+
+func setup(pool: ProjectilePool) -> void:
+	gun.setup(self, pool)
 	
+func _process(_delta: float) -> void:
+	gun.aim_at(get_global_mouse_position())
+
+func _on_hurtbox_hit(attack_info: AttackInfo, source: Node):
+	health_component.take_damage(attack_info, source)

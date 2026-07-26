@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dj0tmvsmnm7lw"]
 
-[ext_resource type="Script" uid="uid://b8vn43ve6y0tk" path="res://entities/weapons/gun/gun.gd" id="1_yse0r"]
-[ext_resource type="Script" uid="uid://gn25apjyeyks" path="res://entities/components/ShooterComponent.gd" id="2_gaufo"]
+[ext_resource type="Script" uid="uid://cckcieeepq3ge" path="res://entities/weapons/component/AttackRangeComponent.gd" id="1_5upm6"]
+[ext_resource type="Script" uid="uid://crxxcbixyn2n6" path="res://entities/weapons/gun/gun.gd" id="1_mkg8s"]
 [ext_resource type="PackedScene" uid="uid://ch4tl0p73fb7d" path="res://entities/projectiles/bullet/Bullet.tscn" id="3_ph7o4"]
+[ext_resource type="Script" uid="uid://cks83tsjqfbjq" path="res://entities/weapons/component/FireRateComponent.gd" id="4_5upm6"]
+[ext_resource type="Script" uid="uid://dvuopmymjxsqp" path="res://entities/components/RotationComponent.gd" id="6_mkg8s"]
+[ext_resource type="Script" uid="uid://blaxo54wmtwk8" path="res://entities/weapons/component/DamageSourceComponent.gd" id="7_fuvk5"]
+[ext_resource type="Script" uid="uid://ofxynp1phj4o" path="res://entities/weapons/component/ProjectileSpawner.gd" id="8_fole5"]
 
 [node name="Gun" type="Node2D" unique_id=1632522534 node_paths=PackedStringArray("muzzle")]
-script = ExtResource("1_yse0r")
+script = ExtResource("1_mkg8s")
 muzzle = NodePath("Muzzle")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=920073094]
@@ -18,7 +22,26 @@ color = Color(0, 0, 0, 1)
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1988943642]
 position = Vector2(20, 0)
 
-[node name="ShooterComponent" type="Node" parent="." unique_id=692378063]
-script = ExtResource("2_gaufo")
-bullet_scene = ExtResource("3_ph7o4")
-metadata/_custom_type_script = "uid://gn25apjyeyks"
+[node name="RotationComponent" type="Node2D" parent="." unique_id=1943568231 node_paths=PackedStringArray("target_body")]
+script = ExtResource("6_mkg8s")
+target_body = NodePath("..")
+follow_mouse = false
+metadata/_custom_type_script = "uid://dvuopmymjxsqp"
+
+[node name="FireRateComponent" type="Node" parent="." unique_id=328782686]
+script = ExtResource("4_5upm6")
+fire_rate = 100.0
+metadata/_custom_type_script = "uid://cks83tsjqfbjq"
+
+[node name="AttackRangeComponent" type="Node2D" parent="." unique_id=794952691]
+script = ExtResource("1_5upm6")
+metadata/_custom_type_script = "uid://cckcieeepq3ge"
+
+[node name="DamageSourceComponent" type="Node" parent="." unique_id=336061803]
+script = ExtResource("7_fuvk5")
+metadata/_custom_type_script = "uid://blaxo54wmtwk8"
+
+[node name="ProjectileSpawner" type="Node" parent="." unique_id=426675152]
+script = ExtResource("8_fole5")
+projectile_scene = ExtResource("3_ph7o4")
+metadata/_custom_type_script = "uid://ofxynp1phj4o"

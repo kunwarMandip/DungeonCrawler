@@ -9,13 +9,13 @@ extends CanvasLayer
 @onready var inventory_panel: Panel = $InventoryPanel
 @onready var tooltip: Panel = $Tooltip
 
-func setup(_inventory: Inventory) -> void:
-	inventory_panel.setup(_inventory)
+func setup(inventory: Inventory) -> void:
+	inventory_panel.setup(inventory)
 	boss_container.visible = false
 
-func update_health(current:float, maximum: float) -> void:
-	health_bar.max_value = maximum
-	health_bar.current_value = current
+func update_health(current_health:float, max_health: float) -> void:
+	health_bar.max_value = max_health
+	health_bar.value = current_health
 
 func update_boss_health(current: float, maximum: float) -> void:
 	boss_health_bar.max_value = maximum

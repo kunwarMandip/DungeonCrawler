@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cj35pfy71u81o"]
+
+[ext_resource type="Texture2D" uid="uid://b44va7imfuun1" path="res://assets/Pixel Art Top Down/Texture/TX Struct.png" id="1_5lm11"]
+[ext_resource type="Script" uid="uid://bevcewxvvs5a4" path="res://tilemap/door/door.gd" id="1_hdo51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnlrc"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lm11"]
+radius = 91.84
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdo51"]
+atlas = ExtResource("1_5lm11")
+region = Rect2(416, 128, 63.836304, 64)
+
+[node name="Door" type="StaticBody2D" unique_id=1550512344]
+script = ExtResource("1_hdo51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=113403781]
+shape = SubResource("RectangleShape2D_pnlrc")
+
+[node name="TriggerZone" type="Area2D" parent="." unique_id=211824970]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone" unique_id=1079203025]
+shape = SubResource("CircleShape2D_5lm11")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35970060]
+texture = SubResource("AtlasTexture_hdo51")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1114382583]
+radius = 45.2

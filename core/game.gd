@@ -7,11 +7,13 @@ extends Node2D
 
 func _ready() -> void:
 	game_manager.setup(player)
+	
 	player.health_component.health_changed.connect(hud.update_health)
 	game_manager.game_won.connect(_on_win)
 	game_manager.game_lost.connect(_on_lose)
 	hud.setup(player.inventory)
-
+	hud.update_health(player.health_component.max_health, player.health_component.current_health)
+	
 func _on_win() -> void:
 	hud.show_win_screen()
 

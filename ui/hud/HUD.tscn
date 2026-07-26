@@ -8,7 +8,6 @@
 script = ExtResource("1_ywxef")
 
 [node name="TopBar" type="HBoxContainer" parent="." unique_id=221988216]
-visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -32,14 +31,12 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="RoomLabel" type="Label" parent="TopBar" unique_id=420432481]
-visible = false
 layout_mode = 2
 text = "ROOM:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InventoryButton" type="Button" parent="TopBar" unique_id=61832246]
-visible = false
 layout_mode = 2
 text = "Inventory"
 

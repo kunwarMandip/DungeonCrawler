@@ -1,11 +1,16 @@
 extends Area2D
 class_name HurtboxComponent
 
-signal hit(damage: float, source: Node)
+signal hit(attack_info: AttackInfo, source: Node)
 
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
+@export var owner_entity: Node2D
+@export var team: Teams.Team = Teams.Team.NEUTRAL
 
-func _on_area_entered(area: Area2D) -> void:
-	print("entered")
-	hit.emit(area.damage_amount, area)
+func take_damage(attack_info: AttackInfo, source: Node) -> bool:
+	if attack_info.owner_entity == owner_entity and not attack_info.allow_self_damage:
+		return false
+	if attack_info.owner_entity != owner_entity and not Teams.is_hostile(attack_info.team, team):
+		return false
+		
+	hit.emit(attack_info, source)
+	return true

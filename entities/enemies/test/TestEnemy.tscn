@@ -9,13 +9,18 @@
 [ext_resource type="Script" uid="uid://c0bxpktxhr5jt" path="res://entities/components/PatrolComponent.gd" id="4_ypwkj"]
 [ext_resource type="Script" uid="uid://ddy7oc5dlng2m" path="res://entities/enemies/states/EnemyIdle.gd" id="5_30ude"]
 [ext_resource type="Script" uid="uid://dsgo34yhiwldc" path="res://entities/enemies/states/EnemyChase.gd" id="5_h7oo2"]
+[ext_resource type="Script" uid="uid://d4fs1q1x5con2" path="res://entities/components/MovementComponent.gd" id="5_qc5v8"]
 [ext_resource type="Script" uid="uid://doq4ffeualtcs" path="res://entities/enemies/states/EnemyPatrol.gd" id="9_11dc3"]
 [ext_resource type="PackedScene" uid="uid://dj0tmvsmnm7lw" path="res://entities/weapons/gun/Gun.tscn" id="11_uyjcb"]
+[ext_resource type="Script" uid="uid://cd6hod5nc4tlo" path="res://entities/enemies/states/EnemyShoot.gd" id="12_iqbes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jerdy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atrib"]
 radius = 140.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqbes"]
+radius = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atrib"]
 
@@ -34,10 +39,6 @@ color = Color(0.3057982, 0.0009233403, 0.7193444, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716177311]
 shape = SubResource("RectangleShape2D_jerdy")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1703017112]
-script = ExtResource("1_tl6vk")
-metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1532073612]
 unique_name_in_owner = true
 path_desired_distance = 4.0
@@ -45,6 +46,10 @@ path_max_distance = 32.0
 avoidance_enabled = true
 radius = 20.0
 avoidance_mask = 0
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1703017112]
+script = ExtResource("1_tl6vk")
+metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
 
 [node name="NavigationComponent" type="Node" parent="." unique_id=147589704]
 script = ExtResource("2_fnu34")
@@ -54,6 +59,11 @@ metadata/_custom_type_script = "uid://b8s5wad65sf1n"
 script = ExtResource("4_ypwkj")
 metadata/_custom_type_script = "uid://c0bxpktxhr5jt"
 
+[node name="MovementComponent" type="Node" parent="." unique_id=615377065 node_paths=PackedStringArray("owner_body")]
+script = ExtResource("5_qc5v8")
+owner_body = NodePath("..")
+metadata/_custom_type_script = "uid://d4fs1q1x5con2"
+
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=158420724]
 collision_layer = 0
 collision_mask = 2
@@ -62,6 +72,15 @@ metadata/_custom_type_script = "uid://d2weles3p46q"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent" unique_id=1405578597]
 shape = SubResource("CircleShape2D_atrib")
+
+[node name="ShootRangeDetection" type="Area2D" parent="." unique_id=686994316]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_h7oo2")
+metadata/_custom_type_script = "uid://d2weles3p46q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRangeDetection" unique_id=154508519]
+shape = SubResource("CircleShape2D_iqbes")
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=480619066]
 collision_layer = 256
@@ -92,19 +111,34 @@ script = ExtResource("4_30ude")
 initial_state = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://bvg6nwrv5oc1s"
 
-[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1962304520]
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1962304520 node_paths=PackedStringArray("movement_component", "detection_componnent")]
 script = ExtResource("5_30ude")
+movement_component = NodePath("../../MovementComponent")
+detection_componnent = NodePath("../../DetectionComponent")
 metadata/_custom_type_script = "uid://ddy7oc5dlng2m"
 
-[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1878799928]
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1878799928 node_paths=PackedStringArray("chase_range_component", "shoot_range_component", "navigation_component", "movement_component")]
 script = ExtResource("5_h7oo2")
 chase_speed = 100.0
+chase_range_component = NodePath("../../DetectionComponent")
+shoot_range_component = NodePath("../../ShootRangeDetection")
+navigation_component = NodePath("../../NavigationComponent")
+movement_component = NodePath("../../MovementComponent")
 metadata/_custom_type_script = "uid://dsgo34yhiwldc"
 
-[node name="EnemyPatrol" type="Node" parent="StateMachine" unique_id=576147184]
+[node name="EnemyPatrol" type="Node" parent="StateMachine" unique_id=576147184 node_paths=PackedStringArray("patrol_component", "movement_component", "detection_component", "navigation_component")]
 script = ExtResource("9_11dc3")
 patrol_speed = 200.0
+patrol_component = NodePath("../../PatrolComponent")
+movement_component = NodePath("../../MovementComponent")
+detection_component = NodePath("../../DetectionComponent")
+navigation_component = NodePath("../../NavigationComponent")
 metadata/_custom_type_script = "uid://doq4ffeualtcs"
+
+[node name="EnemyShoot" type="Node" parent="StateMachine" unique_id=1747843472 node_paths=PackedStringArray("shoot_range_component")]
+script = ExtResource("12_iqbes")
+shoot_range_component = NodePath("../../ShootRangeDetection")
+metadata/_custom_type_script = "uid://cd6hod5nc4tlo"
 
 [node name="StateLabel" type="Label" parent="." unique_id=784492973]
 offset_right = 40.0

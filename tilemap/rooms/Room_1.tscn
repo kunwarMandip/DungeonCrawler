@@ -1,18 +1,19 @@
 [gd_scene format=4 uid="uid://dshmflxyspq1r"]
 
-[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://world/rooms/common/room.gd" id="1_aii61"]
-[ext_resource type="PackedScene" uid="uid://c5q1rdvlxwp2x" path="res://entities/enemies/test/TestEnemy.tscn" id="2_wqvny"]
-[ext_resource type="Texture2D" uid="uid://fjyx86mby4tu" path="res://assets/Pixel Art Top Down/Texture/TX Tileset Wall.png" id="3_wqvny"]
-[ext_resource type="Texture2D" uid="uid://b44va7imfuun1" path="res://assets/Pixel Art Top Down/Texture/TX Struct.png" id="4_5op4y"]
+[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://core/room.gd" id="1_kto53"]
+[ext_resource type="PackedScene" uid="uid://c5q1rdvlxwp2x" path="res://entities/enemies/test/TestEnemy.tscn" id="2_t31to"]
+[ext_resource type="PackedScene" uid="uid://cj35pfy71u81o" path="res://tilemap/door/Door.tscn" id="3_fmeu6"]
+[ext_resource type="Texture2D" uid="uid://fjyx86mby4tu" path="res://assets/Pixel Art Top Down/Texture/TX Tileset Wall.png" id="4_clhfv"]
+[ext_resource type="Texture2D" uid="uid://b44va7imfuun1" path="res://assets/Pixel Art Top Down/Texture/TX Struct.png" id="5_288nr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aii61"]
-vertices = PackedVector2Array(1012, 628, 1261.9219, 701, 19.0625, 701, 908, 628, 180, 628, 908, 524, 76, 628, 20.9375, 19.976563, 76, 524, 1259.0781, 19.007813, 1012, 524, 884, 372, 884, 300, 172, 300, 172, 372, 180, 524)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 4, 2), PackedInt32Array(6, 2, 7, 8), PackedInt32Array(9, 1, 10, 11, 12), PackedInt32Array(7, 9, 12, 13), PackedInt32Array(8, 7, 13, 14), PackedInt32Array(15, 8, 14, 11), PackedInt32Array(5, 4, 15, 11), PackedInt32Array(10, 5, 11), PackedInt32Array(10, 1, 0)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1, 0, -1, 721, 1282, 721, 1279, -1)])
+vertices = PackedVector2Array(884, 372, 1261.9219, 701, 19.15625, 701, 172, 372, 22, 351.04688, 172, 300, 1259.0781, 19.007813, 884, 300, 21.046875, 19.976563)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(8, 6, 7, 5), PackedInt32Array(4, 8, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 0, 2, 351, -1, 721, 1282, 721, 1279, -1)])
 agent_radius = 20.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1cx5"]
-texture = ExtResource("3_wqvny")
+texture = ExtResource("4_clhfv")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -83,7 +84,7 @@ texture_region_size = Vector2i(32, 32)
 5:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goanm"]
-texture = ExtResource("4_5op4y")
+texture = ExtResource("5_288nr")
 texture_region_size = Vector2i(32, 32)
 12:0/0 = 0
 13:0/0 = 0
@@ -212,11 +213,11 @@ sources/0 = SubResource("TileSetAtlasSource_s1cx5")
 sources/1 = SubResource("TileSetAtlasSource_goanm")
 
 [node name="Room1" type="Node2D" unique_id=1323402771]
-script = ExtResource("1_aii61")
+script = ExtResource("1_kto53")
 
 [node name="EnemiesNode" type="Node2D" parent="." unique_id=989661136]
 
-[node name="TestEnemy" parent="EnemiesNode" unique_id=1809461854 instance=ExtResource("2_wqvny")]
+[node name="TestEnemy" parent="EnemiesNode" unique_id=1809461854 instance=ExtResource("2_t31to")]
 
 [node name="Point0" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=87524769]
 position = Vector2(545, 236)
@@ -230,7 +231,7 @@ position = Vector2(542, 433)
 [node name="Point3" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=175000719]
 position = Vector2(138, 347)
 
-[node name="TestEnemy2" parent="EnemiesNode" unique_id=510089519 instance=ExtResource("2_wqvny")]
+[node name="TestEnemy2" parent="EnemiesNode" unique_id=510089519 instance=ExtResource("2_t31to")]
 position = Vector2(438, 119)
 
 [node name="Point0" type="Marker2D" parent="EnemiesNode/TestEnemy2" unique_id=1070175025]
@@ -239,8 +240,12 @@ position = Vector2(-317, -42)
 [node name="Point1" type="Marker2D" parent="EnemiesNode/TestEnemy2" unique_id=530621414]
 position = Vector2(-206, 306)
 
-[node name="DropsNode" type="Node2D" parent="." unique_id=1996809138]
+[node name="DoorsNode" type="Node2D" parent="." unique_id=1996809138]
 metadata/_edit_lock_ = true
+
+[node name="Door" parent="DoorsNode" unique_id=712308477 instance=ExtResource("3_fmeu6")]
+position = Vector2(246, 570)
+target_room_id = "room_2"
 
 [node name="ItemDrops" type="Node2D" parent="." unique_id=554392354]
 position = Vector2(952, 154)
@@ -254,6 +259,5 @@ metadata/_edit_lock_ = true
 tile_map_data = PackedByteArray("AAAGAAoAAAACAAMAAAAHAAoAAAACAAMAAAAIAAoAAAACAAMAAAAJAAoAAAACAAMAAAAKAAoAAAACAAMAAAALAAoAAAACAAMAAAAMAAoAAAACAAMAAAANAAoAAAACAAMAAAAOAAoAAAACAAMAAAAPAAoAAAACAAMAAAAQAAoAAAACAAMAAAARAAoAAAACAAMAAAASAAoAAAACAAMAAAATAAoAAAACAAMAAAAUAAoAAAACAAMAAAAVAAoAAAACAAMAAAAWAAoAAAACAAMAAAAXAAoAAAACAAMAAAAYAAoAAAACAAMAAAAZAAoAAAACAAMAAAAaAAoAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_wqvny")
 
-[node name="door" type="TileMapLayer" parent="NavigationRegion2D/TileMapLayer" unique_id=1786425651]
-tile_map_data = PackedByteArray("AAAGAAoAAAACAAMAAAAHAAoAAAACAAMAAAAIAAoAAAACAAMAAAAJAAoAAAACAAMAAAAKAAoAAAACAAMAAAALAAoAAAACAAMAAAAMAAoAAAACAAMAAAANAAoAAAACAAMAAAAOAAoAAAACAAMAAAAPAAoAAAACAAMAAAAQAAoAAAACAAMAAAARAAoAAAACAAMAAAASAAoAAAACAAMAAAATAAoAAAACAAMAAAAUAAoAAAACAAMAAAAVAAoAAAACAAMAAAAWAAoAAAACAAMAAAAXAAoAAAACAAMAAAAYAAoAAAACAAMAAAAZAAoAAAACAAMAAAAaAAoAAAACAAMAAAADABEAAQANAAQAAAADABIAAQANAAUAAAAEABEAAQAOAAQAAAAEABIAAQAOAAUAAAAdABEAAQANAAQAAAAdABIAAQANAAUAAAAeABEAAQAOAAQAAAAeABIAAQAOAAUAAAA=")
-tile_set = SubResource("TileSet_wqvny")
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=658155737]
+position = Vector2(188, 178)

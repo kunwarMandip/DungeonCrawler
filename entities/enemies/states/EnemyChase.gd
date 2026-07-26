@@ -1,28 +1,33 @@
 extends State
 class_name EnemyChase
 
-@onready var enemy: CharacterBody2D = owner
-
 @export var chase_speed: float = 50.0
 @export var target_lost_chase_grace_time: float = 2.0
+
+@export var chase_range_component: DetectionComponent
+@export var shoot_range_component: DetectionComponent
+@export var navigation_component: NavigationComponent
+@export var movement_component: MovementComponent
 
 var target_last_position: Vector2
 var target_lost_chase_grace_timer: float = 0.0
 
 func Enter() -> void:
-	#print("Enemy Chase")
 	$"../../StateLabel".text = "Enemy Chase"
+	
 func Physics_update(_delta: float) -> void:
 	var dir: Vector2 
-
-	if enemy.detection_component.target:
-		#enemy.gun.shoot()
+	
+	if chase_range_component.target:
 		target_lost_chase_grace_timer = 0.0
-		target_last_position = enemy.detection_component.target.global_position
+		target_last_position = chase_range_component.target.global_position
 		
-		dir = enemy.navigation_component.get_direction_to(enemy.detection_component.target.global_position)
-		enemy.velocity = dir * chase_speed
-		enemy.move_and_slide()
+		if shoot_range_component.target:
+			Transitioned.emit(self, "EnemyShoot")
+			return
+		
+		dir = navigation_component.get_direction_to(chase_range_component.target.global_position)
+		movement_component.move(dir, chase_speed)
 		return
 	
 	target_lost_chase_grace_timer += _delta
@@ -30,6 +35,5 @@ func Physics_update(_delta: float) -> void:
 		Transitioned.emit(self, "EnemyIdle")
 		return
 	
-	dir = enemy.navigation_component.get_direction_to(target_last_position)
-	enemy.velocity = dir * chase_speed
-	enemy.move_and_slide()
+	dir = navigation_component.get_direction_to(target_last_position)
+	movement_component.move(dir, chase_speed)

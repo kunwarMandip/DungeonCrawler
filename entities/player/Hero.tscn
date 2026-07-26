@@ -33,10 +33,11 @@ shape = SubResource("RectangleShape2D_l2w42")
 script = ExtResource("2_6n8re")
 metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=149401948]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=149401948 node_paths=PackedStringArray("owner_entity")]
 collision_layer = 128
 collision_mask = 32
 script = ExtResource("3_qymkh")
+owner_entity = NodePath("..")
 metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=340072321]

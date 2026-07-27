@@ -82,10 +82,11 @@ metadata/_custom_type_script = "uid://d2weles3p46q"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootRangeDetection" unique_id=154508519]
 shape = SubResource("CircleShape2D_iqbes")
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=480619066]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=480619066 node_paths=PackedStringArray("health_component")]
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_iivve")
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2127554149]

@@ -4,6 +4,7 @@ extends Projectile
 
 func _ready() -> void:
 	$HitboxComponent.body_entered.connect(_on_body_entered)
+	$HitboxComponent.hit_landed.connect(_on_bullet_connected)
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
 func _process(delta: float) -> void:
@@ -12,3 +13,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("wall"):
 		return_to_pool()
+
+func _on_bullet_connected(_hurtbox: HurtboxComponent, _damage: float):
+	return_to_pool()

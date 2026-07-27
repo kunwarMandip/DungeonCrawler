@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://ch4tl0p73fb7d"]
 
 [ext_resource type="Script" uid="uid://vj2dx23e5y3o" path="res://entities/projectiles/bullet/bullet.gd" id="1_fldqw"]
+[ext_resource type="Script" uid="uid://c7m1if3ejt807" path="res://entities/components/AttackInfo.gd" id="3_aklw2"]
 [ext_resource type="Script" uid="uid://bnohnefiiak33" path="res://entities/components/HitboxComponent.gd" id="3_xmm78"]
+
+[sub_resource type="Resource" id="Resource_of0jo"]
+script = ExtResource("3_aklw2")
+metadata/_custom_type_script = "uid://c7m1if3ejt807"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fldqw"]
 size = Vector2(10, 6)
@@ -21,7 +26,10 @@ color = Color(0.30573255, 0.0010743747, 0.6701776, 1)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=699135451]
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=769217882]
+collision_layer = 0
+collision_mask = 402
 script = ExtResource("3_xmm78")
+attack_info = SubResource("Resource_of0jo")
 metadata/_custom_type_script = "uid://bnohnefiiak33"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1699796999]

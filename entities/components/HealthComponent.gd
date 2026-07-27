@@ -11,7 +11,7 @@ func _ready() -> void:
 	current_health = max_health
 	
 func take_damage(attack_info: AttackInfo, _source: Node):
-	print("Calculating damage")
+	#print("Calculating damage")
 	if current_health <= 0.0:
 		died.emit()
 	

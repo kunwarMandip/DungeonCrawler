@@ -28,8 +28,9 @@ func show_win_screen() -> void:
 	get_node("WinScreen").visible = true
 
 func show_game_over() -> void:
-	get_node("GameOverScreen").visible = true
-	get_tree().paused = true
+	pass
+	#get_node("GameOverScreen").visible = true
+	#get_tree().paused = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):

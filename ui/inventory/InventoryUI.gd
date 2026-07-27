@@ -1,8 +1,8 @@
 extends Panel
 
-var inventory: Inventory = null
-var selected_slot: int = -1
 var slot_nodes: Array = []
+var selected_slot: int = -1
+var inventory: Inventory = null
 
 @onready var slot_grid: GridContainer = %SlotGrid
 @onready var armor_slot_panel: Panel = %ArmorSlot
@@ -24,7 +24,7 @@ func setup(inv: Inventory) -> void:
 	weapon_slot_panel.gui_input.connect(func(event): _on_equip_clicked(event, "weapon"))
 	armor_slot_panel.gui_input.connect(func(event): _on_equip_clicked(event, "armor"))
 	_rebuild_ui()
-	
+
 func _rebuild_ui() -> void:
 	_update_bag_slots()
 	#_update_equip_slots(weapon_slot_panel, inventory.weapon_slot_panel)

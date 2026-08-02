@@ -1,10 +1,51 @@
 [gd_scene format=4 uid="uid://dshmflxyspq1r"]
 
-[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://core/room.gd" id="1_kto53"]
+[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://tilemap/rooms/common/room.gd" id="1_kto53"]
 [ext_resource type="PackedScene" uid="uid://c5q1rdvlxwp2x" path="res://entities/enemies/test/TestEnemy.tscn" id="2_t31to"]
 [ext_resource type="PackedScene" uid="uid://cj35pfy71u81o" path="res://tilemap/door/Door.tscn" id="3_fmeu6"]
+[ext_resource type="Script" uid="uid://dd0csj54m0pj0" path="res://features/loot/common/LootDrop.gd" id="3_gfv22"]
+[ext_resource type="Script" uid="uid://dg1k4hwh5dro" path="res://features/item/Item.gd" id="4_7qust"]
 [ext_resource type="Texture2D" uid="uid://fjyx86mby4tu" path="res://assets/Pixel Art Top Down/Texture/TX Tileset Wall.png" id="4_clhfv"]
+[ext_resource type="Script" uid="uid://fvopfsl52li1" path="res://features/loot/common/LootTable.gd" id="5_0aq2a"]
 [ext_resource type="Texture2D" uid="uid://b44va7imfuun1" path="res://assets/Pixel Art Top Down/Texture/TX Struct.png" id="5_288nr"]
+[ext_resource type="Script" uid="uid://c8nio8dofw2kk" path="res://features/loot/common/LootSpawner.gd" id="6_qd1xa"]
+
+[sub_resource type="Resource" id="Resource_na38w"]
+script = ExtResource("4_7qust")
+id = "SWORD"
+display_name = "SWORD"
+item_type = 0
+color = Color(0.00014217824, 0.27307674, 0.8232722, 1)
+metadata/_custom_type_script = "uid://dg1k4hwh5dro"
+
+[sub_resource type="Resource" id="Resource_64ese"]
+script = ExtResource("3_gfv22")
+item = SubResource("Resource_na38w")
+metadata/_custom_type_script = "uid://dd0csj54m0pj0"
+
+[sub_resource type="Resource" id="Resource_wu6tq"]
+script = ExtResource("5_0aq2a")
+drops = Array[ExtResource("3_gfv22")]([SubResource("Resource_64ese")])
+metadata/_custom_type_script = "uid://fvopfsl52li1"
+
+[sub_resource type="Resource" id="Resource_7qust"]
+script = ExtResource("4_7qust")
+id = "SADAS"
+display_name = "DASDASD"
+description = "ASDASD"
+item_type = 1
+color = Color(0.15700349, 0.06230075, 0.025707627, 1)
+metadata/_custom_type_script = "uid://dg1k4hwh5dro"
+
+[sub_resource type="Resource" id="Resource_0aq2a"]
+script = ExtResource("3_gfv22")
+item = SubResource("Resource_7qust")
+metadata/_custom_type_script = "uid://dd0csj54m0pj0"
+
+[sub_resource type="Resource" id="Resource_gfv22"]
+script = ExtResource("5_0aq2a")
+drops = Array[ExtResource("3_gfv22")]([SubResource("Resource_0aq2a")])
+metadata/_custom_type_script = "uid://fvopfsl52li1"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aii61"]
 vertices = PackedVector2Array(884, 372, 1261.9219, 701, 19.15625, 701, 172, 372, 22, 351.04688, 172, 300, 1259.0781, 19.007813, 884, 300, 21.046875, 19.976563)
@@ -218,6 +259,7 @@ script = ExtResource("1_kto53")
 [node name="EnemiesNode" type="Node2D" parent="." unique_id=989661136]
 
 [node name="TestEnemy" parent="EnemiesNode" unique_id=1809461854 instance=ExtResource("2_t31to")]
+loot_drop = SubResource("Resource_wu6tq")
 
 [node name="Point0" type="Marker2D" parent="EnemiesNode/TestEnemy" unique_id=87524769]
 position = Vector2(545, 236)
@@ -233,6 +275,7 @@ position = Vector2(138, 347)
 
 [node name="TestEnemy2" parent="EnemiesNode" unique_id=510089519 instance=ExtResource("2_t31to")]
 position = Vector2(438, 119)
+loot_drop = SubResource("Resource_gfv22")
 
 [node name="Point0" type="Marker2D" parent="EnemiesNode/TestEnemy2" unique_id=1070175025]
 position = Vector2(-317, -42)
@@ -261,3 +304,7 @@ tile_set = SubResource("TileSet_wqvny")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=658155737]
 position = Vector2(188, 178)
+
+[node name="LootSpawner" type="Node" parent="." unique_id=862091939]
+script = ExtResource("6_qd1xa")
+metadata/_custom_type_script = "uid://c8nio8dofw2kk"

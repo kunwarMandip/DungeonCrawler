@@ -34,4 +34,5 @@ func show_game_over() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):
+		inventory_panel.rebuild_ui()
 		inventory_panel.visible = not inventory_panel.visible

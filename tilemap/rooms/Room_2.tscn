@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c8msaoujhyhxv"]
 
-[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://core/room.gd" id="1_to3tc"]
+[ext_resource type="Script" uid="uid://ph7vps84wisk" path="res://tilemap/rooms/common/room.gd" id="1_to3tc"]
 [ext_resource type="PackedScene" uid="uid://c5q1rdvlxwp2x" path="res://entities/enemies/test/TestEnemy.tscn" id="2_g82v2"]
 [ext_resource type="Texture2D" uid="uid://b44va7imfuun1" path="res://assets/Pixel Art Top Down/Texture/TX Struct.png" id="2_n1cyv"]
 [ext_resource type="PackedScene" uid="uid://cj35pfy71u81o" path="res://tilemap/door/Door.tscn" id="3_dw4o7"]

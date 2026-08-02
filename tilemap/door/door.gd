@@ -22,7 +22,7 @@ func unlock() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 
 func _on_trigger_area_body_entered(body: Node2D) -> void:
-	print("body entered")
+	#print("body entered")
 	if is_locked:
 		print("body locked")
 		return

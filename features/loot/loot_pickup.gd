@@ -1,7 +1,5 @@
 extends Area2D
 
-signal pickup_requested(item: Item, quantity: int, pickup_node: Node)
-
 @export var item: Item = null
 @export var quantity: int = 1
 
@@ -13,8 +11,12 @@ func _ready() -> void:
 	if item != null:
 		icon.color = item.color
 		pickup_label.text = item.display_name
-	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		pickup_requested.emit(item, quantity, self)
+
+func _on_area_entered(area: Area2D) -> void:
+	if not area is ItemPickupComponent:
+		return
+	
+	var item_pickup_component = area as ItemPickupComponent
+	if item_pickup_component.collect_item(item, quantity):
+		queue_free()

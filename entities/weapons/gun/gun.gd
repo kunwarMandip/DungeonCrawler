@@ -18,6 +18,6 @@ func aim_at(target_position: Vector2) -> void:
 func shoot() -> void:
 	if not fire_rate_component.can_shoot():
 		return
-	
+		
 	projectile_spawner.spawn(muzzle.global_position, muzzle.global_rotation, damage_source_component.build_damage_info())
 	

@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
-signal died(position: Vector2)
+signal died(position: Vector2, loot_table: LootTable)
+
+@export var loot_drop: LootTable
+
+const ITEM_PICKUP_SCENE = preload("uid://mkxcrtbmaib7")
 
 @onready var gun: Node2D = $Gun
 @onready var health_bar: ProgressBar = $HealthBar
@@ -23,5 +27,5 @@ func _on_health_changed(current_health: float, max_health: float):
 	health_bar.value = current_health
 
 func _on_death():
-	died.emit(global_position)
+	died.emit(global_position, loot_drop)
 	queue_free()

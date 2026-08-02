@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ctfnen2gmjfp6" path="res://entities/player/hero.gd" id="1_l2w42"]
 [ext_resource type="Script" uid="uid://dbn27jyjf7ex0" path="res://entities/components/HealthComponent.gd" id="2_6n8re"]
 [ext_resource type="Script" uid="uid://bsp6fwal0mb2v" path="res://entities/components/HurtboxComponent.gd" id="3_qymkh"]
+[ext_resource type="Script" uid="uid://b8rrbplnsbp6m" path="res://entities/components/LootPickupComponent.gd" id="4_qymkh"]
 [ext_resource type="Script" uid="uid://dvdn3cram54nu" path="res://entities/player/states/PlayerIdle.gd" id="6_p6gdv"]
 [ext_resource type="Script" uid="uid://dm2vanc6axcjp" path="res://entities/player/states/PlayerMove.gd" id="7_l2w42"]
 [ext_resource type="Script" uid="uid://bsa618suhwumi" path="res://entities/components/InputComponent.gd" id="7_t2d1t"]
@@ -12,6 +13,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2w42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6n8re"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enlwi"]
+radius = 15.0
 
 [node name="Hero" type="CharacterBody2D" unique_id=676124111]
 collision_layer = 2
@@ -33,6 +37,10 @@ shape = SubResource("RectangleShape2D_l2w42")
 script = ExtResource("2_6n8re")
 metadata/_custom_type_script = "uid://dbn27jyjf7ex0"
 
+[node name="InputComponent" type="Node" parent="." unique_id=100782971]
+script = ExtResource("7_t2d1t")
+metadata/_custom_type_script = "uid://bsa618suhwumi"
+
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=149401948 node_paths=PackedStringArray("owner_entity", "health_component")]
 collision_layer = 128
 collision_mask = 32
@@ -44,9 +52,14 @@ metadata/_custom_type_script = "uid://bsp6fwal0mb2v"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=340072321]
 shape = SubResource("RectangleShape2D_6n8re")
 
-[node name="InputComponent" type="Node" parent="." unique_id=100782971]
-script = ExtResource("7_t2d1t")
-metadata/_custom_type_script = "uid://bsa618suhwumi"
+[node name="ItemPickupComponent" type="Area2D" parent="." unique_id=1842326611]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_qymkh")
+metadata/_custom_type_script = "uid://b8rrbplnsbp6m"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupComponent" unique_id=304221072]
+shape = SubResource("CircleShape2D_enlwi")
 
 [node name="Gun" parent="." unique_id=1632522534 instance=ExtResource("10_enlwi")]
 light_mask = 0

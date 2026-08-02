@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mkxcrtbmaib7"]
 
-[ext_resource type="Script" uid="uid://clbf2rp83dljr" path="res://core/item_pickup.gd" id="1_j614g"]
+[ext_resource type="Script" uid="uid://clbf2rp83dljr" path="res://features/loot/loot_pickup.gd" id="1_7lrlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghmcr"]
 size = Vector2(24, 24)
@@ -8,7 +8,7 @@ size = Vector2(24, 24)
 [node name="ItemPickup" type="Area2D" unique_id=1404241304]
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_j614g")
+script = ExtResource("1_7lrlx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1260805258]
 shape = SubResource("RectangleShape2D_ghmcr")
@@ -28,3 +28,5 @@ offset_right = -19.0
 offset_bottom = -5.0
 theme_override_colors/font_color = Color(0.78431374, 0.6627451, 0.31764707, 1)
 theme_override_font_sizes/font_size = 9
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

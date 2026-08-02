@@ -13,6 +13,7 @@ size = Vector2(10, 6)
 
 [node name="Bullet" type="Node2D" unique_id=378521191]
 script = ExtResource("1_fldqw")
+speed = 500.0
 metadata/_custom_type_script = "uid://bhe5mc0vbrx4g"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=145949922]

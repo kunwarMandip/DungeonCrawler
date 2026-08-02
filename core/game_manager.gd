@@ -13,10 +13,10 @@ var current_room_id: String = ""
 var current_room: Node2D = null
 var player: CharacterBody2D = null
 
-
 func setup(p: CharacterBody2D) -> void:
 	player = p
 	player.health_component.died.connect(_on_player_died)
+	player.setup()
 	_load_room("room_1")
 
 func _load_room(room_id: String) -> void:

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://ckpwyg5ns4q0s"]
+
+[ext_resource type="Script" uid="uid://cjpynld2dfl4b" path="res://features/inventory/ui/equipment/equipment_section.gd" id="1_vrqcn"]
+
+[node name="EquipmentSection" type="VBoxContainer" unique_id=1963548213]
+custom_minimum_size = Vector2(150, 0)
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+script = ExtResource("1_vrqcn")
+
+[node name="SectionLabel" type="Label" parent="." unique_id=1294474587]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "EQUIPMENT"
+horizontal_alignment = 1
+
+[node name="WeaponSlot" type="Panel" parent="." unique_id=1796452945]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"WeaponSlot"
+
+[node name="MarginContainer" type="MarginContainer" parent="WeaponSlot" unique_id=2016275028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WeaponSlot/MarginContainer" unique_id=803891508]
+layout_mode = 2
+
+[node name="SlotIcon" type="ColorRect" parent="WeaponSlot/MarginContainer/HBoxContainer" unique_id=1548500990]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.101960786, 0.101960786, 0.18039216, 1)
+
+[node name="Info" type="VBoxContainer" parent="WeaponSlot/MarginContainer/HBoxContainer" unique_id=2037290825]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="WeaponSlot/MarginContainer/HBoxContainer/Info" unique_id=806360984]
+layout_mode = 2
+theme_type_variation = &"NameLabel"
+
+[node name="StatLabel" type="Label" parent="WeaponSlot/MarginContainer/HBoxContainer/Info" unique_id=1060237424]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StatLabel"
+
+[node name="ArmorSlot" type="Panel" parent="." unique_id=690873153]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"WeaponSlot"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArmorSlot" unique_id=1231522899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArmorSlot/MarginContainer" unique_id=1440744506]
+layout_mode = 2
+
+[node name="SlotIcon" type="ColorRect" parent="ArmorSlot/MarginContainer/HBoxContainer" unique_id=2014614636]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.101960786, 0.101960786, 0.18039216, 1)
+
+[node name="Info" type="VBoxContainer" parent="ArmorSlot/MarginContainer/HBoxContainer" unique_id=1310997032]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="ArmorSlot/MarginContainer/HBoxContainer/Info" unique_id=487758556]
+layout_mode = 2
+theme_type_variation = &"NameLabel"
+
+[node name="StatLabel" type="Label" parent="ArmorSlot/MarginContainer/HBoxContainer/Info" unique_id=452539688]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StatLabel"

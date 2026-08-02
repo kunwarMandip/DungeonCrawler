@@ -1,7 +1,9 @@
 extends Resource
 class_name Item
 
-enum Type { WEAPON, ARMOR, CONSUMABLE }
+enum Type { WEAPON, ARMOR, HELMET, SHOES, CONSUMABLE }
+
+const EQUIPPABLE_TYPES: Array[Type] = [Type.WEAPON, Type.ARMOR, Type.HELMET, Type.SHOES]
 
 @export var id: String = ""
 @export var display_name: String = ""
@@ -11,3 +13,6 @@ enum Type { WEAPON, ARMOR, CONSUMABLE }
 @export var max_stack: int = 1
 @export var attack_bonus: int = 0
 @export var defense_bonus: int = 0
+
+func is_empty() -> bool:
+	return id == ""

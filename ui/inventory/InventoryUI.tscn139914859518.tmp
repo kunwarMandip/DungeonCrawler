@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b3m2nrwcw8e2s" path="res://ui/inventory/Inventory.tres" id="1_j0ti6"]
 [ext_resource type="Script" uid="uid://c31wmv5tnnxtn" path="res://ui/inventory/inventory_panel_ui.gd" id="2_ay77t"]
-[ext_resource type="PackedScene" uid="uid://m5y7s5i8oa73" path="res://features/inventory/ui/slot/Slot.tscn" id="3_gvwsh"]
+[ext_resource type="PackedScene" uid="uid://m5y7s5i8oa73" path="res://ui/inventory/slot/slot.tscn" id="3_gvwsh"]
 
 [node name="InventoryUI" type="Panel" unique_id=1664994652]
 custom_minimum_size = Vector2(520, 380)

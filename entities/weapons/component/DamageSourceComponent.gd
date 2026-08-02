@@ -1,9 +1,9 @@
 extends Node
 class_name DamageSourceComponent
 
-@export var damage: float = 20.0
+@export var damage: float = 100.0
 @export var team: Teams.Team = Teams.Team.PLAYER
-@export var self_damage: bool = false
+@export var self_damage: bool = false 
 var owner_entity: Node2D
 
 func setup(p_owner: Node2D) -> void:

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ds13l7bultsvj"]
+
+[ext_resource type="Script" uid="uid://pjpdjmhnm4k6" path="res://features/inventory/ui/bag/bag_section.gd" id="1_5mjh1"]
+[ext_resource type="PackedScene" uid="uid://m5y7s5i8oa73" path="res://features/inventory/ui/slot/Slot.tscn" id="1_vrgg5"]
+
+[node name="BagSection" type="VBoxContainer" unique_id=587561237]
+script = ExtResource("1_5mjh1")
+
+[node name="SectionLabel" type="Label" parent="." unique_id=1640995267]
+layout_mode = 2
+theme_type_variation = &"SectionLabel"
+text = "BAG"
+
+[node name="SlotGrid" type="GridContainer" parent="." unique_id=964896920]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 5
+columns = 5
+
+[node name="Slot0" parent="SlotGrid" unique_id=1110977672 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot1" parent="SlotGrid" unique_id=1139470026 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot2" parent="SlotGrid" unique_id=2048800506 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot3" parent="SlotGrid" unique_id=1600344886 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot4" parent="SlotGrid" unique_id=341579406 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot5" parent="SlotGrid" unique_id=1187550639 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot6" parent="SlotGrid" unique_id=1782506565 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot7" parent="SlotGrid" unique_id=789026074 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot8" parent="SlotGrid" unique_id=1171463390 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot9" parent="SlotGrid" unique_id=1793308125 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot10" parent="SlotGrid" unique_id=1290999791 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot11" parent="SlotGrid" unique_id=365675271 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot12" parent="SlotGrid" unique_id=1016596979 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot13" parent="SlotGrid" unique_id=1867394401 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot14" parent="SlotGrid" unique_id=1062147799 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot15" parent="SlotGrid" unique_id=1398135940 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot16" parent="SlotGrid" unique_id=1680940417 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot17" parent="SlotGrid" unique_id=1473581446 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot18" parent="SlotGrid" unique_id=1735478468 instance=ExtResource("1_vrgg5")]
+layout_mode = 2
+
+[node name="Slot19" parent="SlotGrid" unique_id=1319125354 instance=ExtResource("1_vrgg5")]
+layout_mode = 2

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5arjm8y2bb0o" path="res://core/game_manager.gd" id="1_86cv7"]
 [ext_resource type="Script" uid="uid://bek6fytw118jg" path="res://core/game.gd" id="1_cmax4"]
 [ext_resource type="PackedScene" uid="uid://bmjhcg4cggwkg" path="res://ui/hud/Hud.tscn" id="1_sgl4g"]
-[ext_resource type="Script" uid="uid://bhox0igqvvqmn" path="res://core/ProjectilePool.gd" id="3_w2rrx"]
+[ext_resource type="Script" uid="uid://bhox0igqvvqmn" path="res://entities/projectiles/common/ProjectilePool.gd" id="3_w2rrx"]
 [ext_resource type="PackedScene" uid="uid://lnainymxj0bc" path="res://entities/player/Hero.tscn" id="4_cmax4"]
 
 [node name="Game" type="Node2D" unique_id=1637116062]

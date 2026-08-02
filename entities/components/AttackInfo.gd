@@ -8,7 +8,7 @@ class_name AttackInfo
 var owner_entity: Node2D
 
 func _init(
-	p_damage_amount: float = 10.0, 
+	p_damage_amount: float = 100.0, 
 	p_team: Teams.Team = Teams.Team.PLAYER, 
 	p_owner: Node2D = null, 
 	p_allow_self_damage: bool = false

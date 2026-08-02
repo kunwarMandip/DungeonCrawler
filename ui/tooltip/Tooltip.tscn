@@ -21,13 +21,16 @@ layout_mode = 2
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1191693386]
 layout_mode = 2
+text = "TEST"
 
 [node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2041591767]
 layout_mode = 2
 theme_type_variation = &"DescLabel"
+text = "Testing testing testing"
 vertical_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 1
 
 [node name="StatLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=660809081]
 layout_mode = 2
 theme_type_variation = &"StatLabel"
+text = "11"
